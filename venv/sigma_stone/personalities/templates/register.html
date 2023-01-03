@@ -1,0 +1,40 @@
+{% extends 'main.html '%}
+{% block title %}Registrar Sigma {% endblock %}
+
+{% block content %}
+<div class="container p-5">
+    <h1>Registrar Sigma</h1>
+    <form enctype="multipart/form-data" action="{% url 'register' %}" method="POST">{% csrf_token %}
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="form-outline">
+              <input type="text" id="name" name="name" class="form-control" required />
+              <label class="form-label" for="name">Name</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-outline">
+              <input type="text" id="city" name="city" class="form-control" required />
+              <label class="form-label" for="city">Born City</label>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <input type="text" id="description" name="description" class="form-control" required />
+          <label class="form-label" for="description">Description</label>
+        </div>
+        
+        <!-- Img input -->
+        <div class="form-outline mb-4">
+            <input type="file" id="photo" name="photo" class="form-control" required />
+            <label class="form-label" for="photo">Photo</label>
+        </div>
+      
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Registrar</button>
+      </form>
+    </div>
+{% endblock %}

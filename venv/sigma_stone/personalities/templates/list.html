@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %} Pag Inicial {% endblock %}
+
+{% block content %}
+<div
+    class="p-5 my-3 text-center bg-image"
+    style="
+      background-image: url('https://static.nationalgeographicbrasil.com/files/styles/image_3200/public/TOS_Rapa_Nui_Unesco_190221_1280x720_1453924931793.jpg?w=1600');
+      height: 650px;
+      background-repeat: no-repeat;
+      border: solid;
+      border-color: black;
+    "
+  >
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+      <div class="d-flex justify-content-center align-items-center h-100">
+        <div class="text-white">
+          <h1 class="">Hello, Sigma. You are so elegant</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="container mt-3">
+    {% if count > 0 %}
+    <div class="row">
+    {% for s in sigmas %}
+    <div class="card bg-secondary text-white col-3 my-2 mx-2 mb-4">
+        <img src="{{BASE_DIR}}/media/{{ s.photo }}" alt="" class="mt-1 card-image">
+        <div class="card-body">{{ s.name }}</div>
+        <div class="card-body">{{ s.city }}</div>
+        <div class="card-body">{{ s.description }}</div>
+        <div class="card-body"><a href="delete/{{ s.id }}"><button class="text-white bg-danger btn">Excluir</button></a></div>
+    </div>
+    {% endfor %}
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="text-center my-3">
+            <h3 class="text-white">Infelizmente ainda não temos sigmas registrados</h3>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
